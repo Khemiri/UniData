@@ -59,16 +59,10 @@ class Orders
     /**
      * @var string
      *
-     * @ORM\Column(name="priceClient", type="decimal")
+     * @ORM\Column(name="price", type="decimal")
      */
-    private $priceClient;
+    private $price;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="priceProvider", type="decimal")
-     */
-    private $priceProvider;
 
     /**
      * @var string
@@ -98,6 +92,69 @@ class Orders
      */
     private $pathFile;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Provider", inversedBy="orders")
+     * @ORM\JoinColumn(name="Provider_id", referencedColumnName="id")
+     */
+    protected $provider;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Laboratories", inversedBy="orders")
+     * @ORM\JoinColumn(name="Laboratories_id", referencedColumnName="id")
+     */
+    protected $laboratory;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Importer", inversedBy="orders")
+     * @ORM\JoinColumn(name="Importer_id", referencedColumnName="id")
+     */
+    protected $importer;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Shipping", inversedBy="orders")
+     * @ORM\JoinColumn(name="Shipping_id", referencedColumnName="id")
+     */
+    protected $shipping;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Payment", inversedBy="orders")
+     * @ORM\JoinColumn(name="Payment_id", referencedColumnName="id")
+     */
+    protected $payment;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Bank", inversedBy="orders")
+     * @ORM\JoinColumn(name="bank_id", referencedColumnName="id")
+     */
+    protected $bank;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Dci", inversedBy="orders")
+     * @ORM\JoinColumn(name="Dci_id", referencedColumnName="id")
+     */
+    protected $dci;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Purchase", inversedBy="order")
+     * @ORM\JoinColumn(name="Purchase_id", referencedColumnName="id")
+     */
+    protected $purchase;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Invoice", inversedBy="order")
+     * @ORM\JoinColumn(name="Invoice_id", referencedColumnName="id")
+     */
+    protected $invoice;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Coa", mappedBy="orders")
+     */
+    protected $coas;
+
+    /**
+     * @ORM\OneToMany(targetEntity="PackingList", mappedBy="orders")
+     */
+    protected $packingLists;
 
     /**
      * Get id
@@ -225,50 +282,28 @@ class Orders
     }
 
     /**
-     * Set priceClient
+     * Set price
      *
-     * @param string $priceClient
+     * @param string $price
      * @return Orders
      */
-    public function setPriceClient($priceClient)
+    public function setPrice($price)
     {
-        $this->priceClient = $priceClient;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get priceClient
+     * Get price
      *
      * @return string 
      */
-    public function getPriceClient()
+    public function getPrice()
     {
-        return $this->priceClient;
+        return $this->price;
     }
 
-    /**
-     * Set priceProvider
-     *
-     * @param string $priceProvider
-     * @return Orders
-     */
-    public function setPriceProvider($priceProvider)
-    {
-        $this->priceProvider = $priceProvider;
-
-        return $this;
-    }
-
-    /**
-     * Get priceProvider
-     *
-     * @return string 
-     */
-    public function getPriceProvider()
-    {
-        return $this->priceProvider;
-    }
 
     /**
      * Set quantity

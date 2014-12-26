@@ -42,6 +42,17 @@ class Batch
      */
     private $dateEXP;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="PackingList", inversedBy="orders")
+     * @ORM\JoinColumn(name="PackingList_id", referencedColumnName="id")
+     */
+    protected $packingList;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Drums", mappedBy="batch")
+     */
+    protected $drums;
+
 
     /**
      * Get id

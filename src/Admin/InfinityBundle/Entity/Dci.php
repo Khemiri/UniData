@@ -31,16 +31,20 @@ class Dci
     /**
      * @var string
      *
-     * @ORM\Column(name="priceClient", type="decimal")
+     * @ORM\Column(name="price", type="decimal")
      */
-    private $priceClient;
+    private $price;
+
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="priceProvider", type="decimal")
+     * @ORM\OneToMany(targetEntity="Specification", mappedBy="dci")
      */
-    private $priceProvider;
+    protected $specifications;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Orders", mappedBy="dci")
+     */
+    protected $orders;
 
 
     /**
@@ -77,48 +81,26 @@ class Dci
     }
 
     /**
-     * Set priceClient
+     * Set price
      *
-     * @param string $priceClient
+     * @param string $price
      * @return Dci
      */
-    public function setPriceClient($priceClient)
+    public function setPrice($price)
     {
-        $this->priceClient = $priceClient;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get priceClient
+     * Get price
      *
      * @return string 
      */
-    public function getPriceClient()
+    public function getPrice()
     {
-        return $this->priceClient;
+        return $this->price;
     }
 
-    /**
-     * Set priceProvider
-     *
-     * @param string $priceProvider
-     * @return Dci
-     */
-    public function setPriceProvider($priceProvider)
-    {
-        $this->priceProvider = $priceProvider;
-
-        return $this;
-    }
-
-    /**
-     * Get priceProvider
-     *
-     * @return string 
-     */
-    public function getPriceProvider()
-    {
-        return $this->priceProvider;
-    }
 }

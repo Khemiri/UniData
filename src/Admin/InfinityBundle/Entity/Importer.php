@@ -28,6 +28,10 @@ class Importer
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Orders", mappedBy="importer")
+     */
+    protected $orders;
 
     /**
      * Get id

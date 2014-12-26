@@ -28,6 +28,15 @@ class Norme
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Specification", mappedBy="norme")
+     */
+    protected $specifications;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Coa", mappedBy="norme")
+     */
+    protected $coas;
 
     /**
      * Get id

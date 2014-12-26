@@ -86,6 +86,12 @@ class Purchase
 
 
     /**
+     * @ORM\OneToOne(targetEntity="Orders", mappedBy="purchase")
+     */
+    protected $order;
+
+
+    /**
      * Get id
      *
      * @return integer 

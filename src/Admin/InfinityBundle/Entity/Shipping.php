@@ -28,6 +28,10 @@ class Shipping
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Orders", mappedBy="shipping")
+     */
+    protected $orders;
 
     /**
      * Get id

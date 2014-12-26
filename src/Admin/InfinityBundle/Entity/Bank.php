@@ -50,6 +50,17 @@ class Bank
      */
     private $accountName;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="banks")
+     * @ORM\JoinColumn(name="Company_id", referencedColumnName="id")
+     */
+    protected $company;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Orders", mappedBy="bank")
+     */
+    protected $orders;
+
 
     /**
      * Get id

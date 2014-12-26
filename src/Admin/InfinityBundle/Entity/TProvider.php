@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TProvider
  *
- * @ORM\Table()
+ * @ORM\Table(name="TProvider")
  * @ORM\Entity
  */
 class TProvider
@@ -28,6 +28,10 @@ class TProvider
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Provider", mappedBy="type")
+     */
+    protected $providers;
 
     /**
      * Get id

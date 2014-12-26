@@ -63,6 +63,23 @@ class Coa
      */
     private $pathFile;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CoaDetails", mappedBy="coa")
+     */
+    protected $coaDetails;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Norme", inversedBy="coas")
+     * @ORM\JoinColumn(name="Norme_id", referencedColumnName="id")
+     */
+    protected $norme;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Orders", inversedBy="coas")
+     * @ORM\JoinColumn(name="Orders_id", referencedColumnName="id")
+     */
+    protected $orders;
 
     /**
      * Get id

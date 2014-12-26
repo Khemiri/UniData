@@ -49,6 +49,10 @@ class Company
      */
     private $logoPath;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Bank", mappedBy="company")
+     */
+    protected $banks;
 
 
 

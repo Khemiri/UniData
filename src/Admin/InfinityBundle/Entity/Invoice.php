@@ -56,6 +56,11 @@ class Invoice
      */
     private $dateSortie;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Orders", mappedBy="invoice")
+     */
+    protected $order;
+
 
     /**
      * Get id

@@ -63,6 +63,16 @@ class Laboratories
      */
     private $tel;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Countries", inversedBy="laboratory")
+     * @ORM\JoinColumn(name="Countries_id", referencedColumnName="id")
+     */
+    protected $country;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Orders", mappedBy="laboratory")
+     */
+    protected $orders;
 
     /**
      * Get id

@@ -70,6 +70,17 @@ class PackingList
      */
     private $pathFile;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Orders", inversedBy="packingLists")
+     * @ORM\JoinColumn(name="Orders_id", referencedColumnName="id")
+     */
+    protected $orders;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Batch", mappedBy="packingList")
+     */
+    protected $batchs;
+
 
     /**
      * Get id

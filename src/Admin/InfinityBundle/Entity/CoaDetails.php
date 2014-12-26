@@ -35,6 +35,17 @@ class CoaDetails
      */
     private $specification;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Tests", inversedBy="coaDetails")
+     * @ORM\JoinColumn(name="Tests_id", referencedColumnName="id")
+     */
+    protected $test;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Coa", inversedBy="coaDetails")
+     * @ORM\JoinColumn(name="Coa_id", referencedColumnName="id")
+     */
+    protected $coa;
 
     /**
      * Get id

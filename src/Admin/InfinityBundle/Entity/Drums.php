@@ -42,6 +42,12 @@ class Drums
      */
     private $numOfDrums;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Batch", inversedBy="drums")
+     * @ORM\JoinColumn(name="Batch_id", referencedColumnName="id")
+     */
+    protected $batch;
+
 
     /**
      * Get id

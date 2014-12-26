@@ -28,6 +28,10 @@ class Payment
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Orders", mappedBy="payment")
+     */
+    protected $orders;
 
     /**
      * Get id

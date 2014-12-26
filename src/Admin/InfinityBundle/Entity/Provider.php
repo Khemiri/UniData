@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Provider
  *
- * @ORM\Table()
+ * @ORM\Table(name="Provider")
  * @ORM\Entity
  */
 class Provider
@@ -55,6 +55,28 @@ class Provider
      * @ORM\Column(name="fax", type="string", length=15)
      */
     private $fax;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Countries", inversedBy="providers")
+     * @ORM\JoinColumn(name="Countries_id", referencedColumnName="id")
+     */
+    protected $country;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="TProvider", inversedBy="providers")
+     * @ORM\JoinColumn(name="TProvider_id", referencedColumnName="id")
+     */
+    protected $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Orders", mappedBy="provider")
+     */
+    protected $orders;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Specification", mappedBy="provider")
+     */
+    protected $specifications;
 
 
     /**

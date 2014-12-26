@@ -28,6 +28,28 @@ class Tests
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="GTests", inversedBy="tests")
+     * @ORM\JoinColumn(name="GTests_id", referencedColumnName="id")
+     */
+    protected $groupe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="TTests", inversedBy="tests")
+     * @ORM\JoinColumn(name="TTests_id", referencedColumnName="id")
+     */
+    protected $type;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Specification", mappedBy="test")
+     */
+    protected $specifications;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CoaDetails", mappedBy="test")
+     */
+    protected $coaDetails;
 
     /**
      * Get id

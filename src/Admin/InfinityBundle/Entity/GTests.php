@@ -28,6 +28,10 @@ class GTests
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Tests", mappedBy="groupe")
+     */
+    protected $tests;
 
     /**
      * Get id

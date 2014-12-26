@@ -28,6 +28,10 @@ class TTests
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Tests", mappedBy="type")
+     */
+    protected $tests;
 
     /**
      * Get id

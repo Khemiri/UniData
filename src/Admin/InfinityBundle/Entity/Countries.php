@@ -42,6 +42,16 @@ class Countries
      */
     private $alpha3;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Provider", mappedBy="country")
+     */
+    protected $providers;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Laboratories", mappedBy="country")
+     */
+    protected $laboratory;
+
 
     /**
      * Get id
