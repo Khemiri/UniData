@@ -3,15 +3,17 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tests
  *
- * @ORM\Table()
+ * @ORM\Table(name="Tests")
  * @ORM\Entity
  */
 class Tests
 {
+    // region les champs
     /**
      * @var integer
      *
@@ -19,48 +21,72 @@ class Tests
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+
     private $id;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="Name must not be empty")
+     * @Assert\MinLength(
+     *      limit=2,
+     *      message="Name should have at least {{ limit }} characters."
+     * )
+     * @Assert\MaxLength(50)
      * @ORM\Column(name="name", type="string", length=50)
      */
+
     private $name;
 
+    // endregion
+
+    //region foreign key Groupe Tests [GTests]
     /**
      * @ORM\ManyToOne(targetEntity="GTests", inversedBy="tests")
      * @ORM\JoinColumn(name="GTests_id", referencedColumnName="id")
      */
-    protected $groupe;
 
+    protected $groupe;
+    //endregion
+
+    //region foreign key Type Tests [TTests]
     /**
      * @ORM\ManyToOne(targetEntity="TTests", inversedBy="tests")
      * @ORM\JoinColumn(name="TTests_id", referencedColumnName="id")
      */
+
     protected $type;
+    //endregion
 
-
+    //region foreign key Specification  [Specification]
     /**
      * @ORM\OneToMany(targetEntity="Specification", mappedBy="test")
      */
-    protected $specifications;
 
+    protected $specifications;
+    //endregion
+
+    //region foreign key coaDetails [CoaDetails]
     /**
      * @ORM\OneToMany(targetEntity="CoaDetails", mappedBy="test")
      */
-    protected $coaDetails;
 
+    protected $coaDetails;
+    //endregion
+
+    //region getteur ID
     /**
      * Get id
      *
      * @return integer 
      */
+
     public function getId()
     {
         return $this->id;
     }
+    //endregion
 
+    //region setteur Name
     /**
      * Set name
      *
@@ -73,7 +99,9 @@ class Tests
 
         return $this;
     }
+    //endregion
 
+    //region getteur Name
     /**
      * Get name
      *
@@ -83,4 +111,5 @@ class Tests
     {
         return $this->name;
     }
+    //endregion
 }
