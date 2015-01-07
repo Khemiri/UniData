@@ -55,6 +55,18 @@ class Dci
      */
     protected $orders;
 
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection $providers
+     *
+     * @ORM\ManyToMany(targetEntity="Provider", inversedBy="dcis")
+     * @ORM\JoinTable(name="DcisProviders",
+     *      joinColumns={@ORM\JoinColumn(name="dci_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="provider_id", referencedColumnName="id")}
+     * )
+     *
+     */
+
+    protected $providers;
 
     /**
      * Get id

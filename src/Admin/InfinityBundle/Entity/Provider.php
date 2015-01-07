@@ -100,6 +100,13 @@ class Provider
      */
     protected $specifications;
 
+    /**
+     * Bidirectional
+     *
+     * @ORM\ManyToMany(targetEntity="Dci", mappedBy="providers")
+     */
+
+    protected $dcis;
 
     /**
      * Get id
