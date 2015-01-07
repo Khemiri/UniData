@@ -75,4 +75,44 @@ class TProvider
     {
         return $this->name;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->providers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add providers
+     *
+     * @param \Admin\InfinityBundle\Entity\Provider $providers
+     * @return TProvider
+     */
+    public function addProvider(\Admin\InfinityBundle\Entity\Provider $providers)
+    {
+        $this->providers[] = $providers;
+
+        return $this;
+    }
+
+    /**
+     * Remove providers
+     *
+     * @param \Admin\InfinityBundle\Entity\Provider $providers
+     */
+    public function removeProvider(\Admin\InfinityBundle\Entity\Provider $providers)
+    {
+        $this->providers->removeElement($providers);
+    }
+
+    /**
+     * Get providers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProviders()
+    {
+        return $this->providers;
+    }
 }

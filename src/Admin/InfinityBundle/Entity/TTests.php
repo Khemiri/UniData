@@ -75,4 +75,44 @@ class TTests
     {
         return $this->name;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tests = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add tests
+     *
+     * @param \Admin\InfinityBundle\Entity\Tests $tests
+     * @return TTests
+     */
+    public function addTest(\Admin\InfinityBundle\Entity\Tests $tests)
+    {
+        $this->tests[] = $tests;
+
+        return $this;
+    }
+
+    /**
+     * Remove tests
+     *
+     * @param \Admin\InfinityBundle\Entity\Tests $tests
+     */
+    public function removeTest(\Admin\InfinityBundle\Entity\Tests $tests)
+    {
+        $this->tests->removeElement($tests);
+    }
+
+    /**
+     * Get tests
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTests()
+    {
+        return $this->tests;
+    }
 }

@@ -102,4 +102,50 @@ class CoaDetails
     {
         return $this->specification;
     }
+
+    /**
+     * Set test
+     *
+     * @param \Admin\InfinityBundle\Entity\Tests $test
+     * @return CoaDetails
+     */
+    public function setTest(\Admin\InfinityBundle\Entity\Tests $test)
+    {
+        $this->test = $test;
+
+        return $this;
+    }
+
+    /**
+     * Get test
+     *
+     * @return \Admin\InfinityBundle\Entity\Tests 
+     */
+    public function getTest()
+    {
+        return $this->test;
+    }
+
+    /**
+     * Set coa
+     *
+     * @param \Admin\InfinityBundle\Entity\Coa $coa
+     * @return CoaDetails
+     */
+    public function setCoa(\Admin\InfinityBundle\Entity\Coa $coa)
+    {
+        $this->coa = $coa;
+
+        return $this;
+    }
+
+    /**
+     * Get coa
+     *
+     * @return \Admin\InfinityBundle\Entity\Coa 
+     */
+    public function getCoa()
+    {
+        return $this->coa;
+    }
 }

@@ -396,4 +396,285 @@ class Orders
     {
         return $this->pathFile;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->coas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->packingLists = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set provider
+     *
+     * @param \Admin\InfinityBundle\Entity\Provider $provider
+     * @return Orders
+     */
+    public function setProvider(\Admin\InfinityBundle\Entity\Provider $provider = null)
+    {
+        $this->provider = $provider;
+
+        return $this;
+    }
+
+    /**
+     * Get provider
+     *
+     * @return \Admin\InfinityBundle\Entity\Provider 
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * Set laboratory
+     *
+     * @param \Admin\InfinityBundle\Entity\Laboratories $laboratory
+     * @return Orders
+     */
+    public function setLaboratory(\Admin\InfinityBundle\Entity\Laboratories $laboratory)
+    {
+        $this->laboratory = $laboratory;
+
+        return $this;
+    }
+
+    /**
+     * Get laboratory
+     *
+     * @return \Admin\InfinityBundle\Entity\Laboratories 
+     */
+    public function getLaboratory()
+    {
+        return $this->laboratory;
+    }
+
+    /**
+     * Set importer
+     *
+     * @param \Admin\InfinityBundle\Entity\Importer $importer
+     * @return Orders
+     */
+    public function setImporter(\Admin\InfinityBundle\Entity\Importer $importer)
+    {
+        $this->importer = $importer;
+
+        return $this;
+    }
+
+    /**
+     * Get importer
+     *
+     * @return \Admin\InfinityBundle\Entity\Importer 
+     */
+    public function getImporter()
+    {
+        return $this->importer;
+    }
+
+    /**
+     * Set shipping
+     *
+     * @param \Admin\InfinityBundle\Entity\Shipping $shipping
+     * @return Orders
+     */
+    public function setShipping(\Admin\InfinityBundle\Entity\Shipping $shipping)
+    {
+        $this->shipping = $shipping;
+
+        return $this;
+    }
+
+    /**
+     * Get shipping
+     *
+     * @return \Admin\InfinityBundle\Entity\Shipping 
+     */
+    public function getShipping()
+    {
+        return $this->shipping;
+    }
+
+    /**
+     * Set payment
+     *
+     * @param \Admin\InfinityBundle\Entity\Payment $payment
+     * @return Orders
+     */
+    public function setPayment(\Admin\InfinityBundle\Entity\Payment $payment)
+    {
+        $this->payment = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Get payment
+     *
+     * @return \Admin\InfinityBundle\Entity\Payment 
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * Set bank
+     *
+     * @param \Admin\InfinityBundle\Entity\Bank $bank
+     * @return Orders
+     */
+    public function setBank(\Admin\InfinityBundle\Entity\Bank $bank)
+    {
+        $this->bank = $bank;
+
+        return $this;
+    }
+
+    /**
+     * Get bank
+     *
+     * @return \Admin\InfinityBundle\Entity\Bank 
+     */
+    public function getBank()
+    {
+        return $this->bank;
+    }
+
+    /**
+     * Set dci
+     *
+     * @param \Admin\InfinityBundle\Entity\Dci $dci
+     * @return Orders
+     */
+    public function setDci(\Admin\InfinityBundle\Entity\Dci $dci)
+    {
+        $this->dci = $dci;
+
+        return $this;
+    }
+
+    /**
+     * Get dci
+     *
+     * @return \Admin\InfinityBundle\Entity\Dci 
+     */
+    public function getDci()
+    {
+        return $this->dci;
+    }
+
+    /**
+     * Set purchase
+     *
+     * @param \Admin\InfinityBundle\Entity\Purchase $purchase
+     * @return Orders
+     */
+    public function setPurchase(\Admin\InfinityBundle\Entity\Purchase $purchase = null)
+    {
+        $this->purchase = $purchase;
+
+        return $this;
+    }
+
+    /**
+     * Get purchase
+     *
+     * @return \Admin\InfinityBundle\Entity\Purchase 
+     */
+    public function getPurchase()
+    {
+        return $this->purchase;
+    }
+
+    /**
+     * Set invoice
+     *
+     * @param \Admin\InfinityBundle\Entity\Invoice $invoice
+     * @return Orders
+     */
+    public function setInvoice(\Admin\InfinityBundle\Entity\Invoice $invoice = null)
+    {
+        $this->invoice = $invoice;
+
+        return $this;
+    }
+
+    /**
+     * Get invoice
+     *
+     * @return \Admin\InfinityBundle\Entity\Invoice 
+     */
+    public function getInvoice()
+    {
+        return $this->invoice;
+    }
+
+    /**
+     * Add coas
+     *
+     * @param \Admin\InfinityBundle\Entity\Coa $coas
+     * @return Orders
+     */
+    public function addCoa(\Admin\InfinityBundle\Entity\Coa $coas)
+    {
+        $this->coas[] = $coas;
+
+        return $this;
+    }
+
+    /**
+     * Remove coas
+     *
+     * @param \Admin\InfinityBundle\Entity\Coa $coas
+     */
+    public function removeCoa(\Admin\InfinityBundle\Entity\Coa $coas)
+    {
+        $this->coas->removeElement($coas);
+    }
+
+    /**
+     * Get coas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCoas()
+    {
+        return $this->coas;
+    }
+
+    /**
+     * Add packingLists
+     *
+     * @param \Admin\InfinityBundle\Entity\PackingList $packingLists
+     * @return Orders
+     */
+    public function addPackingList(\Admin\InfinityBundle\Entity\PackingList $packingLists)
+    {
+        $this->packingLists[] = $packingLists;
+
+        return $this;
+    }
+
+    /**
+     * Remove packingLists
+     *
+     * @param \Admin\InfinityBundle\Entity\PackingList $packingLists
+     */
+    public function removePackingList(\Admin\InfinityBundle\Entity\PackingList $packingLists)
+    {
+        $this->packingLists->removeElement($packingLists);
+    }
+
+    /**
+     * Get packingLists
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPackingLists()
+    {
+        return $this->packingLists;
+    }
 }

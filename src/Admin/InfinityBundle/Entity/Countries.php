@@ -158,4 +158,78 @@ class Countries
     {
         return $this->alpha3;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->providers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->laboratory = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add providers
+     *
+     * @param \Admin\InfinityBundle\Entity\Provider $providers
+     * @return Countries
+     */
+    public function addProvider(\Admin\InfinityBundle\Entity\Provider $providers)
+    {
+        $this->providers[] = $providers;
+
+        return $this;
+    }
+
+    /**
+     * Remove providers
+     *
+     * @param \Admin\InfinityBundle\Entity\Provider $providers
+     */
+    public function removeProvider(\Admin\InfinityBundle\Entity\Provider $providers)
+    {
+        $this->providers->removeElement($providers);
+    }
+
+    /**
+     * Get providers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProviders()
+    {
+        return $this->providers;
+    }
+
+    /**
+     * Add laboratory
+     *
+     * @param \Admin\InfinityBundle\Entity\Laboratories $laboratory
+     * @return Countries
+     */
+    public function addLaboratory(\Admin\InfinityBundle\Entity\Laboratories $laboratory)
+    {
+        $this->laboratory[] = $laboratory;
+
+        return $this;
+    }
+
+    /**
+     * Remove laboratory
+     *
+     * @param \Admin\InfinityBundle\Entity\Laboratories $laboratory
+     */
+    public function removeLaboratory(\Admin\InfinityBundle\Entity\Laboratories $laboratory)
+    {
+        $this->laboratory->removeElement($laboratory);
+    }
+
+    /**
+     * Get laboratory
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLaboratory()
+    {
+        return $this->laboratory;
+    }
 }

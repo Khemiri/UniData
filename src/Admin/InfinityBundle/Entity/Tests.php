@@ -116,4 +116,124 @@ class Tests
         return $this->name;
     }
     //endregion
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->specifications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->coaDetails = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set groupe
+     *
+     * @param \Admin\InfinityBundle\Entity\GTests $groupe
+     * @return Tests
+     */
+    public function setGroupe(\Admin\InfinityBundle\Entity\GTests $groupe)
+    {
+        $this->groupe = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * Get groupe
+     *
+     * @return \Admin\InfinityBundle\Entity\GTests 
+     */
+    public function getGroupe()
+    {
+        return $this->groupe;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Admin\InfinityBundle\Entity\TTests $type
+     * @return Tests
+     */
+    public function setType(\Admin\InfinityBundle\Entity\TTests $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Admin\InfinityBundle\Entity\TTests 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Add specifications
+     *
+     * @param \Admin\InfinityBundle\Entity\Specification $specifications
+     * @return Tests
+     */
+    public function addSpecification(\Admin\InfinityBundle\Entity\Specification $specifications)
+    {
+        $this->specifications[] = $specifications;
+
+        return $this;
+    }
+
+    /**
+     * Remove specifications
+     *
+     * @param \Admin\InfinityBundle\Entity\Specification $specifications
+     */
+    public function removeSpecification(\Admin\InfinityBundle\Entity\Specification $specifications)
+    {
+        $this->specifications->removeElement($specifications);
+    }
+
+    /**
+     * Get specifications
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSpecifications()
+    {
+        return $this->specifications;
+    }
+
+    /**
+     * Add coaDetails
+     *
+     * @param \Admin\InfinityBundle\Entity\CoaDetails $coaDetails
+     * @return Tests
+     */
+    public function addCoaDetail(\Admin\InfinityBundle\Entity\CoaDetails $coaDetails)
+    {
+        $this->coaDetails[] = $coaDetails;
+
+        return $this;
+    }
+
+    /**
+     * Remove coaDetails
+     *
+     * @param \Admin\InfinityBundle\Entity\CoaDetails $coaDetails
+     */
+    public function removeCoaDetail(\Admin\InfinityBundle\Entity\CoaDetails $coaDetails)
+    {
+        $this->coaDetails->removeElement($coaDetails);
+    }
+
+    /**
+     * Get coaDetails
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCoaDetails()
+    {
+        return $this->coaDetails;
+    }
 }

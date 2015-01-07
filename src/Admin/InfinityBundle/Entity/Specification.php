@@ -93,4 +93,96 @@ class Specification
     {
         return $this->limitValue;
     }
+
+    /**
+     * Set provider
+     *
+     * @param \Admin\InfinityBundle\Entity\Provider $provider
+     * @return Specification
+     */
+    public function setProvider(\Admin\InfinityBundle\Entity\Provider $provider = null)
+    {
+        $this->provider = $provider;
+
+        return $this;
+    }
+
+    /**
+     * Get provider
+     *
+     * @return \Admin\InfinityBundle\Entity\Provider 
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * Set dci
+     *
+     * @param \Admin\InfinityBundle\Entity\Dci $dci
+     * @return Specification
+     */
+    public function setDci(\Admin\InfinityBundle\Entity\Dci $dci)
+    {
+        $this->dci = $dci;
+
+        return $this;
+    }
+
+    /**
+     * Get dci
+     *
+     * @return \Admin\InfinityBundle\Entity\Dci 
+     */
+    public function getDci()
+    {
+        return $this->dci;
+    }
+
+    /**
+     * Set norme
+     *
+     * @param \Admin\InfinityBundle\Entity\Norme $norme
+     * @return Specification
+     */
+    public function setNorme(\Admin\InfinityBundle\Entity\Norme $norme)
+    {
+        $this->norme = $norme;
+
+        return $this;
+    }
+
+    /**
+     * Get norme
+     *
+     * @return \Admin\InfinityBundle\Entity\Norme 
+     */
+    public function getNorme()
+    {
+        return $this->norme;
+    }
+
+    /**
+     * Set test
+     *
+     * @param \Admin\InfinityBundle\Entity\Tests $test
+     * @return Specification
+     */
+    public function setTest(\Admin\InfinityBundle\Entity\Tests $test)
+    {
+        $this->test = $test;
+
+        return $this;
+    }
+
+    /**
+     * Get test
+     *
+     * @return \Admin\InfinityBundle\Entity\Tests 
+     */
+    public function getTest()
+    {
+        return $this->test;
+    }
 }

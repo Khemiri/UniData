@@ -146,4 +146,67 @@ class Batch
     {
         return $this->dateEXP;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->drums = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set packingList
+     *
+     * @param \Admin\InfinityBundle\Entity\PackingList $packingList
+     * @return Batch
+     */
+    public function setPackingList(\Admin\InfinityBundle\Entity\PackingList $packingList)
+    {
+        $this->packingList = $packingList;
+
+        return $this;
+    }
+
+    /**
+     * Get packingList
+     *
+     * @return \Admin\InfinityBundle\Entity\PackingList 
+     */
+    public function getPackingList()
+    {
+        return $this->packingList;
+    }
+
+    /**
+     * Add drums
+     *
+     * @param \Admin\InfinityBundle\Entity\Drums $drums
+     * @return Batch
+     */
+    public function addDrum(\Admin\InfinityBundle\Entity\Drums $drums)
+    {
+        $this->drums[] = $drums;
+
+        return $this;
+    }
+
+    /**
+     * Remove drums
+     *
+     * @param \Admin\InfinityBundle\Entity\Drums $drums
+     */
+    public function removeDrum(\Admin\InfinityBundle\Entity\Drums $drums)
+    {
+        $this->drums->removeElement($drums);
+    }
+
+    /**
+     * Get drums
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDrums()
+    {
+        return $this->drums;
+    }
 }

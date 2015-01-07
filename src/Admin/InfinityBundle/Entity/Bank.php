@@ -199,4 +199,67 @@ class Bank
     {
         return $this->accountName;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set company
+     *
+     * @param \Admin\InfinityBundle\Entity\Company $company
+     * @return Bank
+     */
+    public function setCompany(\Admin\InfinityBundle\Entity\Company $company)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \Admin\InfinityBundle\Entity\Company 
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $orders
+     * @return Bank
+     */
+    public function addOrder(\Admin\InfinityBundle\Entity\Orders $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $orders
+     */
+    public function removeOrder(\Admin\InfinityBundle\Entity\Orders $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
 }

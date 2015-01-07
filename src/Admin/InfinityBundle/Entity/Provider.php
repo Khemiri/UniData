@@ -232,4 +232,158 @@ class Provider
     {
         return $this->fax;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->specifications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dcis = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set country
+     *
+     * @param \Admin\InfinityBundle\Entity\Countries $country
+     * @return Provider
+     */
+    public function setCountry(\Admin\InfinityBundle\Entity\Countries $country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Admin\InfinityBundle\Entity\Countries 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Admin\InfinityBundle\Entity\TProvider $type
+     * @return Provider
+     */
+    public function setType(\Admin\InfinityBundle\Entity\TProvider $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Admin\InfinityBundle\Entity\TProvider 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $orders
+     * @return Provider
+     */
+    public function addOrder(\Admin\InfinityBundle\Entity\Orders $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $orders
+     */
+    public function removeOrder(\Admin\InfinityBundle\Entity\Orders $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * Add specifications
+     *
+     * @param \Admin\InfinityBundle\Entity\Specification $specifications
+     * @return Provider
+     */
+    public function addSpecification(\Admin\InfinityBundle\Entity\Specification $specifications)
+    {
+        $this->specifications[] = $specifications;
+
+        return $this;
+    }
+
+    /**
+     * Remove specifications
+     *
+     * @param \Admin\InfinityBundle\Entity\Specification $specifications
+     */
+    public function removeSpecification(\Admin\InfinityBundle\Entity\Specification $specifications)
+    {
+        $this->specifications->removeElement($specifications);
+    }
+
+    /**
+     * Get specifications
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSpecifications()
+    {
+        return $this->specifications;
+    }
+
+    /**
+     * Add dcis
+     *
+     * @param \Admin\InfinityBundle\Entity\Dci $dcis
+     * @return Provider
+     */
+    public function addDci(\Admin\InfinityBundle\Entity\Dci $dcis)
+    {
+        $this->dcis[] = $dcis;
+
+        return $this;
+    }
+
+    /**
+     * Remove dcis
+     *
+     * @param \Admin\InfinityBundle\Entity\Dci $dcis
+     */
+    public function removeDci(\Admin\InfinityBundle\Entity\Dci $dcis)
+    {
+        $this->dcis->removeElement($dcis);
+    }
+
+    /**
+     * Get dcis
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDcis()
+    {
+        return $this->dcis;
+    }
 }

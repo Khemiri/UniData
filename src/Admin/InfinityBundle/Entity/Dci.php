@@ -124,4 +124,112 @@ class Dci
         return $this->price;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->specifications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->providers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add specifications
+     *
+     * @param \Admin\InfinityBundle\Entity\Specification $specifications
+     * @return Dci
+     */
+    public function addSpecification(\Admin\InfinityBundle\Entity\Specification $specifications)
+    {
+        $this->specifications[] = $specifications;
+
+        return $this;
+    }
+
+    /**
+     * Remove specifications
+     *
+     * @param \Admin\InfinityBundle\Entity\Specification $specifications
+     */
+    public function removeSpecification(\Admin\InfinityBundle\Entity\Specification $specifications)
+    {
+        $this->specifications->removeElement($specifications);
+    }
+
+    /**
+     * Get specifications
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSpecifications()
+    {
+        return $this->specifications;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $orders
+     * @return Dci
+     */
+    public function addOrder(\Admin\InfinityBundle\Entity\Orders $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $orders
+     */
+    public function removeOrder(\Admin\InfinityBundle\Entity\Orders $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * Add providers
+     *
+     * @param \Admin\InfinityBundle\Entity\Provider $providers
+     * @return Dci
+     */
+    public function addProvider(\Admin\InfinityBundle\Entity\Provider $providers)
+    {
+        $this->providers[] = $providers;
+
+        return $this;
+    }
+
+    /**
+     * Remove providers
+     *
+     * @param \Admin\InfinityBundle\Entity\Provider $providers
+     */
+    public function removeProvider(\Admin\InfinityBundle\Entity\Provider $providers)
+    {
+        $this->providers->removeElement($providers);
+    }
+
+    /**
+     * Get providers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProviders()
+    {
+        return $this->providers;
+    }
 }

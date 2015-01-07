@@ -189,4 +189,27 @@ class Invoice
     {
         return $this->dateSortie;
     }
+
+    /**
+     * Set order
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $order
+     * @return Invoice
+     */
+    public function setOrder(\Admin\InfinityBundle\Entity\Orders $order = null)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return \Admin\InfinityBundle\Entity\Orders 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
 }

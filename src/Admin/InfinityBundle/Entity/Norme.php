@@ -79,4 +79,78 @@ class Norme
     {
         return $this->name;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->specifications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->coas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add specifications
+     *
+     * @param \Admin\InfinityBundle\Entity\Specification $specifications
+     * @return Norme
+     */
+    public function addSpecification(\Admin\InfinityBundle\Entity\Specification $specifications)
+    {
+        $this->specifications[] = $specifications;
+
+        return $this;
+    }
+
+    /**
+     * Remove specifications
+     *
+     * @param \Admin\InfinityBundle\Entity\Specification $specifications
+     */
+    public function removeSpecification(\Admin\InfinityBundle\Entity\Specification $specifications)
+    {
+        $this->specifications->removeElement($specifications);
+    }
+
+    /**
+     * Get specifications
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSpecifications()
+    {
+        return $this->specifications;
+    }
+
+    /**
+     * Add coas
+     *
+     * @param \Admin\InfinityBundle\Entity\Coa $coas
+     * @return Norme
+     */
+    public function addCoa(\Admin\InfinityBundle\Entity\Coa $coas)
+    {
+        $this->coas[] = $coas;
+
+        return $this;
+    }
+
+    /**
+     * Remove coas
+     *
+     * @param \Admin\InfinityBundle\Entity\Coa $coas
+     */
+    public function removeCoa(\Admin\InfinityBundle\Entity\Coa $coas)
+    {
+        $this->coas->removeElement($coas);
+    }
+
+    /**
+     * Get coas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCoas()
+    {
+        return $this->coas;
+    }
 }

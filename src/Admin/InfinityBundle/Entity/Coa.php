@@ -254,4 +254,90 @@ class Coa
     {
         return $this->pathFile;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->coaDetails = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add coaDetails
+     *
+     * @param \Admin\InfinityBundle\Entity\CoaDetails $coaDetails
+     * @return Coa
+     */
+    public function addCoaDetail(\Admin\InfinityBundle\Entity\CoaDetails $coaDetails)
+    {
+        $this->coaDetails[] = $coaDetails;
+
+        return $this;
+    }
+
+    /**
+     * Remove coaDetails
+     *
+     * @param \Admin\InfinityBundle\Entity\CoaDetails $coaDetails
+     */
+    public function removeCoaDetail(\Admin\InfinityBundle\Entity\CoaDetails $coaDetails)
+    {
+        $this->coaDetails->removeElement($coaDetails);
+    }
+
+    /**
+     * Get coaDetails
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCoaDetails()
+    {
+        return $this->coaDetails;
+    }
+
+    /**
+     * Set norme
+     *
+     * @param \Admin\InfinityBundle\Entity\Norme $norme
+     * @return Coa
+     */
+    public function setNorme(\Admin\InfinityBundle\Entity\Norme $norme)
+    {
+        $this->norme = $norme;
+
+        return $this;
+    }
+
+    /**
+     * Get norme
+     *
+     * @return \Admin\InfinityBundle\Entity\Norme 
+     */
+    public function getNorme()
+    {
+        return $this->norme;
+    }
+
+    /**
+     * Set orders
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $orders
+     * @return Coa
+     */
+    public function setOrders(\Admin\InfinityBundle\Entity\Orders $orders)
+    {
+        $this->orders = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Admin\InfinityBundle\Entity\Orders 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
 }

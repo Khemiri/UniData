@@ -127,4 +127,27 @@ class Drums
     {
         return $this->numOfDrums;
     }
+
+    /**
+     * Set batch
+     *
+     * @param \Admin\InfinityBundle\Entity\Batch $batch
+     * @return Drums
+     */
+    public function setBatch(\Admin\InfinityBundle\Entity\Batch $batch)
+    {
+        $this->batch = $batch;
+
+        return $this;
+    }
+
+    /**
+     * Get batch
+     *
+     * @return \Admin\InfinityBundle\Entity\Batch 
+     */
+    public function getBatch()
+    {
+        return $this->batch;
+    }
 }

@@ -306,4 +306,67 @@ class PackingList
     {
         return $this->pathFile;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->batchs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set orders
+     *
+     * @param \Admin\InfinityBundle\Entity\Orders $orders
+     * @return PackingList
+     */
+    public function setOrders(\Admin\InfinityBundle\Entity\Orders $orders)
+    {
+        $this->orders = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Admin\InfinityBundle\Entity\Orders 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * Add batchs
+     *
+     * @param \Admin\InfinityBundle\Entity\Batch $batchs
+     * @return PackingList
+     */
+    public function addBatch(\Admin\InfinityBundle\Entity\Batch $batchs)
+    {
+        $this->batchs[] = $batchs;
+
+        return $this;
+    }
+
+    /**
+     * Remove batchs
+     *
+     * @param \Admin\InfinityBundle\Entity\Batch $batchs
+     */
+    public function removeBatch(\Admin\InfinityBundle\Entity\Batch $batchs)
+    {
+        $this->batchs->removeElement($batchs);
+    }
+
+    /**
+     * Get batchs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBatchs()
+    {
+        return $this->batchs;
+    }
 }

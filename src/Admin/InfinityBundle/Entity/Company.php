@@ -191,4 +191,44 @@ class Company
     {
         return $this->logoPath;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->banks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add banks
+     *
+     * @param \Admin\InfinityBundle\Entity\Bank $banks
+     * @return Company
+     */
+    public function addBank(\Admin\InfinityBundle\Entity\Bank $banks)
+    {
+        $this->banks[] = $banks;
+
+        return $this;
+    }
+
+    /**
+     * Remove banks
+     *
+     * @param \Admin\InfinityBundle\Entity\Bank $banks
+     */
+    public function removeBank(\Admin\InfinityBundle\Entity\Bank $banks)
+    {
+        $this->banks->removeElement($banks);
+    }
+
+    /**
+     * Get banks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBanks()
+    {
+        return $this->banks;
+    }
 }
