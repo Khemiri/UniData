@@ -25,12 +25,30 @@ class Bank
     /**
      * @var string
      *
-     * @ORM\Column(name="swift", type="string", length=30)
+     * @Assert\NotBlank(message="Swift Code must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "100",
+     *      minMessage = "Swift Code must be at least {{ limit }} characters long",
+     *      maxMessage = "Swift Code cannot be longer than {{ limit }} characters long"
+     * )
+     *
+     * @ORM\Column(name="swift", type="string", length=100)
      */
     private $swift;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="Account Number must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "100",
+     *      minMessage = "Account Number must be at least {{ limit }} characters long",
+     *      maxMessage = "Account Number cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="accountNum", type="string", length=100)
      */
@@ -39,6 +57,15 @@ class Bank
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="Address must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "50",
+     *      minMessage = "Address must be at least {{ limit }} characters long",
+     *      maxMessage = "Address cannot be longer than {{ limit }} characters long"
+     * )
+     *
      * @ORM\Column(name="address", type="string", length=50)
      */
     private $address;
@@ -46,13 +73,22 @@ class Bank
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="Account Name must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "255",
+     *      minMessage = "Account Name must be at least {{ limit }} characters long",
+     *      maxMessage = "Account Name cannot be longer than {{ limit }} characters long"
+     * )
+     *
      * @ORM\Column(name="accountName", type="string", length=255)
      */
     private $accountName;
 
     /**
      * @ORM\ManyToOne(targetEntity="Company", inversedBy="banks")
-     * @ORM\JoinColumn(name="Company_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Company_id", referencedColumnName="id", nullable=false)
      */
     protected $company;
 

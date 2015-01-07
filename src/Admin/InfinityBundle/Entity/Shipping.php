@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Shipping
  *
- * @ORM\Table()
+ * @ORM\Table(name="Shipping")
  * @ORM\Entity
  */
 class Shipping
@@ -23,8 +24,15 @@ class Shipping
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Shipping description must not be empty")
      *
-     * @ORM\Column(name="name", type="string", length=20)
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "10",
+     *      minMessage = "Shipping description must be at least {{ limit }} characters long",
+     *      maxMessage = "Shipping description cannot be longer than {{ limit }} characters long"
+     * )
+     * @ORM\Column(name="name", type="string", length=10)
      */
     private $name;
 

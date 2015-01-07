@@ -3,6 +3,8 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Invoice
@@ -23,38 +25,39 @@ class Invoice
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="date")
+     * @Assert\DateTime()
+     * @ORM\Column(name="date", type="date", nullable=false)
      */
     private $date;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="datePayment", type="date")
+     * @Assert\DateTime()
+     * @ORM\Column(name="datePayment", type="date", nullable=true)
      */
     private $datePayment;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="dpcb", type="date")
+     * @Assert\DateTime()
+     * @ORM\Column(name="dpcb", type="date", nullable=true)
      */
     private $dpcb;
 
     /**
+     * @var \DateTime
+     * @Assert\DateTime()
+     * @ORM\Column(name="dateSortie", type="date", nullable=true)
+     */
+    private $dateSortie;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="airwaybill", type="string", length=255)
+     * @ORM\Column(name="airwaybill", type="string", length=255, nullable=true)
      */
     private $airwaybill;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateSortie", type="date")
-     */
-    private $dateSortie;
 
     /**
      * @ORM\OneToOne(targetEntity="Orders", mappedBy="invoice")

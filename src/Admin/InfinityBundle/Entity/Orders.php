@@ -59,7 +59,7 @@ class Orders
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal")
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=3, nullable=false)
      */
     private $price;
 
@@ -67,82 +67,82 @@ class Orders
     /**
      * @var string
      *
-     * @ORM\Column(name="quantity", type="decimal")
+     * @ORM\Column(name="quantity", type="decimal", precision=10, scale=3, nullable=false)
      */
     private $quantity;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="obervation", type="text")
+     * @ORM\Column(name="observation", type="text", nullable=true)
      */
-    private $obervation;
+    private $observation;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateProforma", type="date")
+     * @ORM\Column(name="dateProforma", type="date", nullable=true)
      */
     private $dateProforma;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pathFile", type="string", length=255)
+     * @ORM\Column(name="pathFile", type="string", length=255, nullable=true)
      */
     private $pathFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="Provider", inversedBy="orders")
-     * @ORM\JoinColumn(name="Provider_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Provider_id", referencedColumnName="id", nullable=true)
      */
     protected $provider;
 
     /**
      * @ORM\ManyToOne(targetEntity="Laboratories", inversedBy="orders")
-     * @ORM\JoinColumn(name="Laboratories_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Laboratories_id", referencedColumnName="id", nullable=false)
      */
     protected $laboratory;
 
     /**
      * @ORM\ManyToOne(targetEntity="Importer", inversedBy="orders")
-     * @ORM\JoinColumn(name="Importer_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Importer_id", referencedColumnName="id", nullable=false)
      */
     protected $importer;
 
     /**
      * @ORM\ManyToOne(targetEntity="Shipping", inversedBy="orders")
-     * @ORM\JoinColumn(name="Shipping_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Shipping_id", referencedColumnName="id", nullable=false)
      */
     protected $shipping;
 
     /**
      * @ORM\ManyToOne(targetEntity="Payment", inversedBy="orders")
-     * @ORM\JoinColumn(name="Payment_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Payment_id", referencedColumnName="id", nullable=false)
      */
     protected $payment;
 
     /**
      * @ORM\ManyToOne(targetEntity="Bank", inversedBy="orders")
-     * @ORM\JoinColumn(name="bank_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="bank_id", referencedColumnName="id", nullable=false)
      */
     protected $bank;
 
     /**
      * @ORM\OneToOne(targetEntity="Dci", inversedBy="orders")
-     * @ORM\JoinColumn(name="Dci_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Dci_id", referencedColumnName="id", nullable=false)
      */
     protected $dci;
 
     /**
      * @ORM\OneToOne(targetEntity="Purchase", inversedBy="order")
-     * @ORM\JoinColumn(name="Purchase_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Purchase_id", referencedColumnName="id", nullable=true)
      */
     protected $purchase;
 
     /**
      * @ORM\ManyToOne(targetEntity="Invoice", inversedBy="order")
-     * @ORM\JoinColumn(name="Invoice_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Invoice_id", referencedColumnName="id", nullable=true)
      */
     protected $invoice;
 
@@ -329,14 +329,14 @@ class Orders
     }
 
     /**
-     * Set obervation
+     * Set observation
      *
-     * @param string $obervation
+     * @param string $observation
      * @return Orders
      */
-    public function setObervation($obervation)
+    public function setObservation($observation)
     {
-        $this->obervation = $obervation;
+        $this->observation = $observation;
 
         return $this;
     }
@@ -346,9 +346,9 @@ class Orders
      *
      * @return string 
      */
-    public function getObervation()
+    public function getObservation()
     {
-        return $this->obervation;
+        return $this->observation;
     }
 
     /**

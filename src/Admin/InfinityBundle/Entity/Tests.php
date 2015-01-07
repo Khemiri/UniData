@@ -26,12 +26,16 @@ class Tests
 
     /**
      * @var string
+     *
      * @Assert\NotBlank(message="Name must not be empty")
-     * @Assert\MinLength(
-     *      limit=2,
-     *      message="Name should have at least {{ limit }} characters."
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "50",
+     *      minMessage = "Test name must be at least {{ limit }} characters long",
+     *      maxMessage = "Test name cannot be longer than {{ limit }} characters long"
      * )
-     * @Assert\MaxLength(50)
+     *
      * @ORM\Column(name="name", type="string", length=50)
      */
 
@@ -42,7 +46,7 @@ class Tests
     //region foreign key Groupe Tests [GTests]
     /**
      * @ORM\ManyToOne(targetEntity="GTests", inversedBy="tests")
-     * @ORM\JoinColumn(name="GTests_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="GTests_id", referencedColumnName="id", nullable=false)
      */
 
     protected $groupe;
@@ -51,7 +55,7 @@ class Tests
     //region foreign key Type Tests [TTests]
     /**
      * @ORM\ManyToOne(targetEntity="TTests", inversedBy="tests")
-     * @ORM\JoinColumn(name="TTests_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="TTests_id", referencedColumnName="id", nullable=false)
      */
 
     protected $type;

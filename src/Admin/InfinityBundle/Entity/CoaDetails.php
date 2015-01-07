@@ -24,26 +24,26 @@ class CoaDetails
     /**
      * @var string
      *
-     * @ORM\Column(name="resultValue", type="string", length=255)
+     * @ORM\Column(name="resultValue", type="string", length=255, nullable=false)
      */
     private $resultValue;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="specification", type="string", length=255)
+     * @ORM\Column(name="specification", type="string", length=255, nullable=true)
      */
     private $specification;
 
     /**
      * @ORM\ManyToOne(targetEntity="Tests", inversedBy="coaDetails")
-     * @ORM\JoinColumn(name="Tests_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Tests_id", referencedColumnName="id", nullable=false)
      */
     protected $test;
 
     /**
      * @ORM\ManyToOne(targetEntity="Coa", inversedBy="coaDetails")
-     * @ORM\JoinColumn(name="Coa_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Coa_id", referencedColumnName="id", nullable=false)
      */
     protected $coa;
 

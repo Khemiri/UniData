@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company
  *
- * @ORM\Table()
+ * @ORM\Table(name="Company")
  * @ORM\Entity
  */
 class Company
@@ -23,6 +24,14 @@ class Company
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Company name must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "255",
+     *      minMessage = "Company name must be at least {{ limit }} characters long",
+     *      maxMessage = "Company name cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
@@ -31,12 +40,30 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="abreviation", type="string", length=20)
+     * @Assert\NotBlank(message="Abbreviation must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "255",
+     *      minMessage = "Abbreviation must be at least {{ limit }} characters long",
+     *      maxMessage = "abbreviation name cannot be longer than {{ limit }} characters long"
+     * )
+     *
+     * @ORM\Column(name="abbreviation", type="string", length=20)
      */
-    private $abreviation;
+    private $abbreviation;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="Address must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "255",
+     *      minMessage = "Address must be at least {{ limit }} characters long",
+     *      maxMessage = "Address name cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="address", type="string", length=255)
      */
@@ -44,6 +71,15 @@ class Company
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="Path file must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "255",
+     *      minMessage = "Path file must be at least {{ limit }} characters long",
+     *      maxMessage = "Path file cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="logoPath", type="string", unique = true, nullable= false, length=255)
      */
@@ -92,12 +128,12 @@ class Company
     /**
      * Set abreviation
      *
-     * @param string $abreviation
+     * @param string $abbreviation
      * @return Company
      */
-    public function setAbreviation($abreviation)
+    public function setAbbreviation($abbreviation)
     {
-        $this->abreviation = $abreviation;
+        $this->abbreviation = $abbreviation;
 
         return $this;
     }
@@ -107,9 +143,9 @@ class Company
      *
      * @return string 
      */
-    public function getAbreviation()
+    public function getAbbreviation()
     {
-        return $this->abreviation;
+        return $this->abbreviation;
     }
 
     /**

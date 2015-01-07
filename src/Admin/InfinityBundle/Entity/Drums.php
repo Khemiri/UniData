@@ -24,27 +24,27 @@ class Drums
     /**
      * @var string
      *
-     * @ORM\Column(name="nwt", type="decimal")
+     * @ORM\Column(name="nwt", type="decimal", precision=10, scale=3, nullable=false)
      */
     private $nwt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="gwt", type="decimal")
+     * @ORM\Column(name="gwt", type="decimal", precision=10, scale=3, nullable=false)
      */
     private $gwt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numOfDrums", type="string", length=255)
+     * @ORM\Column(name="numOfDrums", type="string", length=255, nullable=false)
      */
     private $numOfDrums;
 
     /**
      * @ORM\ManyToOne(targetEntity="Batch", inversedBy="drums")
-     * @ORM\JoinColumn(name="Batch_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Batch_id", referencedColumnName="id", nullable=false)
      */
     protected $batch;
 

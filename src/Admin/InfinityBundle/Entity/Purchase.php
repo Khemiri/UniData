@@ -31,56 +31,56 @@ class Purchase
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateExpLc", type="date")
+     * @ORM\Column(name="dateExpLc", type="date", nullable=true)
      */
     private $dateExpLc;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateLc", type="date")
+     * @ORM\Column(name="dateLc", type="date", nullable=true)
      */
     private $dateLc;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateUltime", type="date")
+     * @ORM\Column(name="dateUltime", type="date", nullable=true)
      */
     private $dateUltime;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lcn", type="string", length=100)
+     * @ORM\Column(name="lcn", type="string", length=100, nullable=true)
      */
     private $lcn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="shipment", type="string", length=100)
+     * @ORM\Column(name="shipment", type="string", length=100, nullable=true)
      */
     private $shipment;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ref", type="string", length=100)
+     * @ORM\Column(name="ref", type="string", length=100, nullable=true)
      */
     private $ref;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="bankLc", type="string", length=255)
+     * @ORM\Column(name="bankLc", type="string", length=255, nullable=true)
      */
     private $bankLc;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pathFile", type="string", length=255)
+     * @ORM\Column(name="pathFile", type="string", length=255, nullable=true)
      */
     private $pathFile;
 

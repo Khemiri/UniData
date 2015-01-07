@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PackingList
  *
- * @ORM\Table()
+ * @ORM\Table(name="PackingList")
  * @ORM\Entity
  */
 class PackingList
@@ -23,13 +24,23 @@ class PackingList
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime(
+     *      message = "Date Packing List is not a valid date"
+     * )
      * @ORM\Column(name="date", type="date")
      */
     private $date;
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Invoice Number must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "100",
+     *      minMessage = "Invoice Number must be at least {{ limit }} characters long",
+     *      maxMessage = "Invoice Number cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="invoiceNum", type="string", length=100)
      */
@@ -37,6 +48,16 @@ class PackingList
 
     /**
      * @var string
+     * @Assert\NotBlank(
+     *          message="No. & kind of Pkgs must not be empty"
+     * )
+     *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "100",
+     *      minMessage = "No. & kind of Pkgs must be at least {{ limit }} characters long",
+     *      maxMessage = "No. & kind of Pkgs cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="nkop", type="string", length=100)
      */
@@ -45,12 +66,34 @@ class PackingList
     /**
      * @var string
      *
+     * @Assert\NotBlank(
+     *      message="Port of discharge must not be empty"
+     * )
+     *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "100",
+     *      minMessage = "Port of discharge must be at least {{ limit }} characters long",
+     *      maxMessage = "Port of discharge cannot be longer than {{ limit }} characters long"
+     * )
+     *
      * @ORM\Column(name="portOfDischarge", type="string", length=100)
      */
     private $portOfDischarge;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(
+     *      message="Port of loading must not be empty"
+     * )
+     *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "100",
+     *      minMessage = "Port of loading must be at least {{ limit }} characters long",
+     *      maxMessage = "Port of loading cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="portOfLoading", type="string", length=100)
      */
@@ -59,6 +102,17 @@ class PackingList
     /**
      * @var string
      *
+     * @Assert\NotBlank(
+     *      message="Vessel / Voyage N° must not be empty"
+     * )
+     *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "100",
+     *      minMessage = "Vessel / Voyage N° must be at least {{ limit }} characters long",
+     *      maxMessage = "Vessel / Voyage N° cannot be longer than {{ limit }} characters long"
+     * )
+     *
      * @ORM\Column(name="vvno", type="string", length=100)
      */
     private $vvno;
@@ -66,13 +120,13 @@ class PackingList
     /**
      * @var string
      *
-     * @ORM\Column(name="pathFile", type="string", length=255)
+     * @ORM\Column(name="pathFile", type="string", length=255, nullable=true)
      */
     private $pathFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="Orders", inversedBy="packingLists")
-     * @ORM\JoinColumn(name="Orders_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Orders_id", referencedColumnName="id", nullable=false)
      */
     protected $orders;
 

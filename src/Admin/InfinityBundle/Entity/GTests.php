@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * GTests
  *
- * @ORM\Table()
+ * @ORM\Table(name="GTests")
  * @ORM\Entity
  */
 class GTests
@@ -24,7 +25,16 @@ class GTests
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=20)
+     * @Assert\NotBlank(message="Name must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "50",
+     *      minMessage = "Name must be at least {{ limit }} characters long",
+     *      maxMessage = "Name cannot be longer than {{ limit }} characters long"
+     * )
+     *
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 

@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Coa
  *
- * @ORM\Table()
+ * @ORM\Table(name="Coa")
  * @ORM\Entity
  */
 class Coa
@@ -24,34 +25,59 @@ class Coa
     /**
      * @var string
      *
-     * @ORM\Column(name="batchNum", type="string", length=100)
+     * @Assert\NotBlank(
+     *      message="Batch Number must not be empty"
+     * )
+     *
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "100",
+     *      minMessage = "Batch Number must be at least {{ limit }} characters long",
+     *      maxMessage = "Batch Number cannot be longer than {{ limit }} characters long"
+     * )
+     *
+     * @ORM\Column(name="batchNum", type="string", length=100, nullable=false)
      */
     private $batchNum;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="batchSize", type="decimal")
+     * @Assert\NotBlank(
+     *      message="Batch Size must be decimal value"
+     * )
+     * @ORM\Column(name="batchSize", type="decimal", precision=10, scale=3, nullable=false)
      */
     private $batchSize;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="arn", type="string", length=100)
+     * @Assert\Length(
+     *      min = "4",
+     *      max = "100",
+     *      minMessage = "ARN must be at least {{ limit }} characters long",
+     *      maxMessage = "ARN cannot be longer than {{ limit }} characters long"
+     * )
+     *
+     * @ORM\Column(name="arn", type="string", length=100, nullable=true)
      */
     private $arn;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime(
+     *      message = "Manufacturing Date is not a valid date"
+     * )
      * @ORM\Column(name="mfg", type="date")
      */
     private $mfg;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime(
+     *      message = "Retest Date is not a valid date"
+     * )
      * @ORM\Column(name="retest", type="date")
      */
     private $retest;
@@ -59,7 +85,7 @@ class Coa
     /**
      * @var string
      *
-     * @ORM\Column(name="pathFile", type="string", length=255)
+     * @ORM\Column(name="pathFile", type="string", length=255, unique=true, nullable=true)
      */
     private $pathFile;
 
@@ -71,13 +97,13 @@ class Coa
 
     /**
      * @ORM\ManyToOne(targetEntity="Norme", inversedBy="coas")
-     * @ORM\JoinColumn(name="Norme_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Norme_id", referencedColumnName="id", nullable=false)
      */
     protected $norme;
 
     /**
      * @ORM\ManyToOne(targetEntity="Orders", inversedBy="coas")
-     * @ORM\JoinColumn(name="Orders_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Orders_id", referencedColumnName="id", nullable=false)
      */
     protected $orders;
 

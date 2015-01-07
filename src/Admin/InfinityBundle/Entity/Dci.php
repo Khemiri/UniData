@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Dci
  *
- * @ORM\Table()
+ * @ORM\Table(name="Dci")
  * @ORM\Entity
  */
 class Dci
@@ -23,15 +24,23 @@ class Dci
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Name of DCI must not be empty")
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "255",
+     *      minMessage = "Name must be at least {{ limit }} characters long",
+     *      maxMessage = "Name cannot be longer than {{ limit }} characters long"
+     * )
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false, unique=true)
      */
     private $name;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="price", type="decimal")
+     * @Assert\NotBlank(message="Price must not be empty")
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=3, nullable=false, unique=false)
      */
     private $price;
 

@@ -3,6 +3,7 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Payment
@@ -23,6 +24,14 @@ class Payment
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Payment description must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "10",
+     *      minMessage = "Payment description must be at least {{ limit }} characters long",
+     *      maxMessage = "Payment description cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="name", type="string", length=10)
      */

@@ -3,6 +3,7 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Laboratories
@@ -23,6 +24,14 @@ class Laboratories
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Laboratory name must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "Laboratory name must be at least {{ limit }} characters long",
+     *      maxMessage = "Laboratory name description cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
@@ -30,6 +39,14 @@ class Laboratories
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Address must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "255",
+     *      minMessage = "Address must be at least {{ limit }} characters long",
+     *      maxMessage = "Address description cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="address", type="string", length=255)
      */
@@ -37,13 +54,26 @@ class Laboratories
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="abreviation", type="string", length=20)
+     * @Assert\NotBlank(message="Abbreviation must not be empty")
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "20",
+     *      minMessage = "Abbreviation must be at least {{ limit }} characters long",
+     *      maxMessage = "abbreviation description cannot be longer than {{ limit }} characters long"
+     * )
+     * @ORM\Column(name="abbreviation", type="string", length=20)
      */
-    private $abreviation;
+    private $abbreviation;
 
     /**
      * @var string
+     *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "10",
+     *      minMessage = "Postal code must be at least {{ limit }} characters long",
+     *      maxMessage = "Postal code cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="codepostal", type="string", length=10)
      */
@@ -51,21 +81,31 @@ class Laboratories
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="fax", type="string", length=15)
+     * @Assert\Length(
+     *      min = "8",
+     *      max = "15",
+     *      minMessage = "Fax Number must be at least {{ limit }} characters long",
+     *      maxMessage = "Fax Number code cannot be longer than {{ limit }} characters long"
+     * )
+     * @ORM\Column(name="fax", type="string", length=15, nullable=true)
      */
     private $fax;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="tel", type="string", length=15)
+     * @Assert\Length(
+     *      min = "8",
+     *      max = "15",
+     *      minMessage = "Phone Number must be at least {{ limit }} characters long",
+     *      maxMessage = "Phone Number code cannot be longer than {{ limit }} characters long"
+     * )
+     * @ORM\Column(name="tel", type="string", length=15, nullable=true)
      */
     private $tel;
 
     /**
      * @ORM\ManyToOne(targetEntity="Countries", inversedBy="laboratory")
-     * @ORM\JoinColumn(name="Countries_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Countries_id", referencedColumnName="id", nullable=false)
      */
     protected $country;
 
@@ -131,26 +171,26 @@ class Laboratories
     }
 
     /**
-     * Set abreviation
+     * Set abbreviation
      *
-     * @param string $abreviation
+     * @param string $abbreviation
      * @return Laboratories
      */
-    public function setAbreviation($abreviation)
+    public function setAbbreviation($abbreviation)
     {
-        $this->abreviation = $abreviation;
+        $this->abbreviation = $abbreviation;
 
         return $this;
     }
 
     /**
-     * Get abreviation
+     * Get abbreviation
      *
      * @return string 
      */
-    public function getAbreviation()
+    public function getAbbreviation()
     {
-        return $this->abreviation;
+        return $this->abbreviation;
     }
 
     /**

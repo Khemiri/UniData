@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Importer
  *
- * @ORM\Table()
+ * @ORM\Table(name="Importer")
  * @ORM\Entity
  */
 class Importer
@@ -23,6 +24,15 @@ class Importer
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank(message="Importer name must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "3",
+     *      max = "50",
+     *      minMessage = "Importer name must be at least {{ limit }} characters long",
+     *      maxMessage = "Importer name cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="name", type="string", length=50)
      */

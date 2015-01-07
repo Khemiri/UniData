@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Norme
  *
- * @ORM\Table()
+ * @ORM\Table(name="Norme")
  * @ORM\Entity
  */
 class Norme
@@ -23,6 +24,14 @@ class Norme
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Norme must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "1",
+     *      max = "20",
+     *      minMessage = "Norme must be at least {{ limit }} characters long",
+     *      maxMessage = "Norme cannot be longer than {{ limit }} characters long"
+     * )
      *
      * @ORM\Column(name="name", type="string", length=20)
      */

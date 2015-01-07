@@ -3,11 +3,12 @@
 namespace Admin\InfinityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Batch
  *
- * @ORM\Table()
+ * @ORM\Table(name="Batch")
  * @ORM\Entity
  */
 class Batch
@@ -24,27 +25,40 @@ class Batch
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="Batch Number must not be empty")
+     *
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "10",
+     *      minMessage = "Batch Number must be at least {{ limit }} characters long",
+     *      maxMessage = "Batch Number cannot be longer than {{ limit }} characters long"
+     * )
+     *
      * @ORM\Column(name="batchNum", type="string", length=10)
      */
     private $batchNum;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime(
+     *      message = "Manufacturing Date is not a valid date"
+     * )
      * @ORM\Column(name="dateMFG", type="date")
      */
     private $dateMFG;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime(
+     *      message = "Expiry Date is not a valid date"
+     * )
      * @ORM\Column(name="dateEXP", type="date")
      */
     private $dateEXP;
 
     /**
      * @ORM\ManyToOne(targetEntity="PackingList", inversedBy="orders")
-     * @ORM\JoinColumn(name="PackingList_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="PackingList_id", referencedColumnName="id", nullable=false)
      */
     protected $packingList;
 
