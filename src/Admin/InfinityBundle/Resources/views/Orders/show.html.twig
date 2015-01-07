@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Orders</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nbcf</th>
+                <td>{{ entity.nbcf }}</td>
+            </tr>
+            <tr>
+                <th>Paymentat</th>
+                <td>{{ entity.paymentAt }}</td>
+            </tr>
+            <tr>
+                <th>Shippingby</th>
+                <td>{{ entity.shippingBy }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dateprevu</th>
+                <td>{{ entity.datePrevu|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ entity.price }}</td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>{{ entity.quantity }}</td>
+            </tr>
+            <tr>
+                <th>Observation</th>
+                <td>{{ entity.observation }}</td>
+            </tr>
+            <tr>
+                <th>Dateproforma</th>
+                <td>{{ entity.dateProforma|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Pathfile</th>
+                <td>{{ entity.pathFile }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('orders') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('orders_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

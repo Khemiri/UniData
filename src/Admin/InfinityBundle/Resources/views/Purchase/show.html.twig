@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Purchase</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dateexplc</th>
+                <td>{{ entity.dateExpLc|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Datelc</th>
+                <td>{{ entity.dateLc|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dateultime</th>
+                <td>{{ entity.dateUltime|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lcn</th>
+                <td>{{ entity.lcn }}</td>
+            </tr>
+            <tr>
+                <th>Shipment</th>
+                <td>{{ entity.shipment }}</td>
+            </tr>
+            <tr>
+                <th>Ref</th>
+                <td>{{ entity.ref }}</td>
+            </tr>
+            <tr>
+                <th>Banklc</th>
+                <td>{{ entity.bankLc }}</td>
+            </tr>
+            <tr>
+                <th>Pathfile</th>
+                <td>{{ entity.pathFile }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('purchase') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('purchase_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

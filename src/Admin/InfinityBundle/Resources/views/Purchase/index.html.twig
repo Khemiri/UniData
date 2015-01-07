@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Purchase list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Dateexplc</th>
+                <th>Datelc</th>
+                <th>Dateultime</th>
+                <th>Lcn</th>
+                <th>Shipment</th>
+                <th>Ref</th>
+                <th>Banklc</th>
+                <th>Pathfile</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('purchase_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateExpLc %}{{ entity.dateExpLc|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateLc %}{{ entity.dateLc|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateUltime %}{{ entity.dateUltime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.lcn }}</td>
+                <td>{{ entity.shipment }}</td>
+                <td>{{ entity.ref }}</td>
+                <td>{{ entity.bankLc }}</td>
+                <td>{{ entity.pathFile }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('purchase_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('purchase_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('purchase_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
