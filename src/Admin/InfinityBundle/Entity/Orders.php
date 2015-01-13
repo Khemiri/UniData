@@ -124,24 +124,24 @@ class Orders
 
     /**
      * @ORM\ManyToOne(targetEntity="Bank", inversedBy="orders")
-     * @ORM\JoinColumn(name="bank_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="Bank_id", referencedColumnName="id", nullable=false)
      */
     protected $bank;
 
     /**
-     * @ORM\OneToOne(targetEntity="Dci", inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity="Dci", inversedBy="orders")
      * @ORM\JoinColumn(name="Dci_id", referencedColumnName="id", nullable=false)
      */
     protected $dci;
 
     /**
-     * @ORM\OneToOne(targetEntity="Purchase", inversedBy="order")
-     * @ORM\JoinColumn(name="Purchase_id", referencedColumnName="id", nullable=true)
+     * @ORM\OneToOne(targetEntity="Purchase", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     protected $purchase;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Invoice", inversedBy="order")
+     * @ORM\OneToOne(targetEntity="Invoice", inversedBy="order")
      * @ORM\JoinColumn(name="Invoice_id", referencedColumnName="id", nullable=true)
      */
     protected $invoice;

@@ -24,7 +24,7 @@ class PurchaseType extends AbstractType
             ->add('ref')
             ->add('bankLc')
             ->add('pathFile')
-            ->add('order')
+            //->add('order')
         ;
     }
     

@@ -46,7 +46,7 @@ class Tests
     //region foreign key Groupe Tests [GTests]
     /**
      * @ORM\ManyToOne(targetEntity="GTests", inversedBy="tests")
-     * @ORM\JoinColumn(name="GTests_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="GTests_id", referencedColumnName="id")
      */
 
     protected $groupe;

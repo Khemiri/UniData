@@ -262,4 +262,12 @@ class Bank
     {
         return $this->orders;
     }
+
+    /**
+     * @return string
+     */
+
+    public function __toString(){
+        return $this->getAccountName();
+    }
 }

@@ -232,4 +232,12 @@ class Dci
     {
         return $this->providers;
     }
+
+    /**
+     * @return string
+     */
+
+    public function __toString(){
+        return $this->getName();
+    }
 }

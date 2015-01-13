@@ -2,11 +2,16 @@
 
 namespace Admin\InfinityBundle\Controller;
 
+use Admin\InfinityBundle\Entity\Purchase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use Utiles\ImageUploadBundle\Models\Document;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 use Admin\InfinityBundle\Entity\Orders;
 use Admin\InfinityBundle\Form\OrdersType;
 
@@ -85,18 +90,91 @@ class OrdersController extends Controller
      * Displays a form to create a new Orders entity.
      *
      * @Route("/new", name="orders_new")
-     * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Orders();
-        $form   = $this->createCreateForm($entity);
+        $order = new Orders();
+        $form = $this->createForm(new OrdersType(), $order);
+        $request = $this->getRequest();
 
-        return array(
-            'entity' => $entity,
+
+        if($request->getMethod() === "POST"){
+
+            $status = 'succes';
+            $uploadedURL = '';
+            $image = $request->files->get('img');
+            $message = '';
+
+            if(($image instanceof UploadedFile) && ($image->getError() == '0'))
+            {
+                if($image->getSize() < 20000000){
+
+                    $originalName = $image->getClientOriginalName();
+                    $name_array = explode('.', $originalName);
+                    $file_type = $name_array[sizeof($name_array)-1];
+                    $valid_filetypes = array('pdf');
+
+                    if(in_array(strtolower($file_type), $valid_filetypes)){
+                        $document = new Document();
+                        $document->setFile($image);
+                        $document->setSubDirectory('uploads');
+                        $document->processFile();
+
+                        $form->bind($request);
+
+                        if($form->isValid()){
+                            $order->setPathFile($document->getFilePersistencePath());
+
+                            $order->setDate(new \DateTime($request->get('date')));
+                            $order->setDatePrevu(new \DateTime($request->get('datePrevu')));
+
+                            $order->getPurchase()->setDate(new \DateTime($request->get('datelc')));
+
+                            /*
+                                $purchase = new Purchase();
+                                $purchase->setDate(new \DateTime($request->get('datelc')));
+
+                                $order->setPurchase($purchase);
+                            */
+
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($order);
+                            $em->flush();
+
+                            $status  = 'Success';
+                            $message = 'Ajouter avec succées';
+                        }
+
+                    }
+                    else{
+                        $status  = 'Failed';
+                        $message = 'Invalid File Type';
+                    }
+
+                }
+                else{
+                    $status  = 'Failed';
+                    $message = 'size exceeds limit';
+                }
+            }
+            else{
+                $status  = 'Failed';
+                $message = 'File Error --- ';
+            }
+
+            return $this->render('InfinityBundle:Orders:new.html.twig', array(
+                'entity'      => $order,
+                'form'        => $form->createView(),
+                'status'      => $status,
+                'message'     => $message,
+                'uploadedURL' => $uploadedURL
+            ));
+        }
+        return $this->render('InfinityBundle:Orders:new.html.twig', array(
+            'entity' => $order,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**

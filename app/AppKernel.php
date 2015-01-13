@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Admin\InfinityBundle\InfinityBundle(),
+            new Utiles\ImageUploadBundle\UploadImageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

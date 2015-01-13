@@ -57,7 +57,7 @@ class Batch
     private $dateEXP;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PackingList", inversedBy="orders")
+     * @ORM\ManyToOne(targetEntity="PackingList", inversedBy="batchs")
      * @ORM\JoinColumn(name="PackingList_id", referencedColumnName="id", nullable=false)
      */
     protected $packingList;

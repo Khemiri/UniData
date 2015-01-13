@@ -38,12 +38,12 @@ class OrdersType extends AbstractType
                 'allow_add' => true,
                 'by_reference' => false
             ))
-            ->add('invoice', 'collection', array(
+            /*->add('invoice', 'collection', array(
                 'type' => new InvoiceType(),
                 'prototype' => true,
                 'allow_add' => true,
                 'by_reference' => false
-            ));
+            ))*/;
     }
     
     /**

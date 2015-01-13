@@ -113,4 +113,12 @@ class Shipping
     {
         return $this->orders;
     }
+
+    /**
+     * @return string
+     */
+
+    public function __toString(){
+        return $this->getName();
+    }
 }
