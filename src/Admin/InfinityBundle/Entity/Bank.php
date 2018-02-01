@@ -27,9 +27,7 @@ class Bank
      * @var string
      *
      * @Assert\NotBlank(message="Swift Code must not be empty")
-     *
-     * @Assert\Length(
-     *      min = "3",
+     *n = "3",
      *      max = "100",
      *      minMessage = "Swift Code must be at least {{ limit }} characters long",
      *      maxMessage = "Swift Code cannot be longer than {{ limit }} characters long"
